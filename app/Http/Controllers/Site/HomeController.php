@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -15,6 +16,7 @@ class HomeController extends Controller
      */
     public function show(Request $request)
     {
-        return view('site.home.index');
+        $movies = DB::table('movies',)->get();
+        return view('site.home.index', ['movies' => $movies]);
     }
 }
